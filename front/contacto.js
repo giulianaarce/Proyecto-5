@@ -139,4 +139,4 @@ function saludaHoraInicio() {
     alert("Buenas noches " + localStorage.getItem("nombre") + ". Difrute la pagina!!!");
   }
   }
- 
+ //comentario realizado por Malu para prueba 04/11/20
