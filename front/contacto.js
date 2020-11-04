@@ -8,7 +8,7 @@ const POSTURL = "http://localhost:4200/user";
 const FORMURL = "http://localhost:4200/contactos";
 let arrForm =[];
 //Posicionamiento
-
+console.log("hola")
 let inputNombre = document.querySelector("#nombre");
 let inputEmail = document.querySelector("#email");
 let inputTelefono = document.querySelector("#phone");
