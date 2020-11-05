@@ -1,9 +1,9 @@
 import React from 'react'
 
 
-export default class Product extends React.Component{
+export default class Product extends React.Component {
 
-    
+
     render() {
         return (
             <div className="card mb-3" style={{ maxWidth: '540px' }}>
@@ -19,8 +19,12 @@ export default class Product extends React.Component{
                         </div>
                     </div>
                 </div>
+                </div>
+                
 
 
 
-        )
-        
+
+        );
+    }
+}
