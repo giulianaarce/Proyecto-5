@@ -3,6 +3,7 @@ import ProductItem from './ProductItem'
 
 export default class Products extends React.Component{
 
+
     render() {
         return(
                 <>
@@ -29,6 +30,8 @@ export default class Products extends React.Component{
 
 
         )
+
+
     }
 
 }
