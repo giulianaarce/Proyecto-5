@@ -16,8 +16,18 @@ export default class App extends React.Component{
   constructor(){
     super() 
     this.state={
-      product:{}
+      productos:{}
     }
+  }
+  //Productos
+  componentDidMount(){
+    fetch("http://localhost:4200/productos")
+    .then((res)=>{
+      return res.json()
+    }).then((json)=> {
+      this.setState({productos:json})
+    })
+
   }
   
   render(){

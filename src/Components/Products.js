@@ -8,7 +8,7 @@ export default class Products extends React.Component{
         return(
                 <>
                 <ul className="list-group">
-                    {this.props.arrProducts.map((product)=>{
+                    {this.props.arrproductos.map((product)=>{
                         return(
                             <ProductItem title={product.title}
                                          description={product.description}
