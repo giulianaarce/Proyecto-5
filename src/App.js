@@ -12,36 +12,57 @@ import {
 } from "react-router-dom";
 
 
-export default class App extends React.Component{
-  constructor(){
-    super() 
-    this.state={
-      productos:{}
+export default class App extends React.Component {
+  constructor() {
+    super()
+    this.state = {
+      productos: "",
+      formulario: "",
+      banner:"",
     }
   }
   //Productos
-  componentDidMount(){
+  componentDidMount() {
     fetch("http://localhost:4200/productos")
-    .then((res)=>{
-      return res.json()
-    }).then((json)=> {
-      this.setState({productos:json})
-    })
-
+      .then((res) => {
+        return res.json()
+      }).then((json) => {
+        this.setState({ productos: json })
+      })
+      fetch("http://localhost:4200/banner")
+      .then((res)=>{return res.json()})
+      .then((json)=>{return this.setState({banner: json})})
   }
-  
-  render(){
-    return(
+
+  enviar = (name, email, phone, subject, message) => {
+    const form = {
+      name: name,
+      email: email,
+      phone: phone,
+      subject: subject,
+      message: message
+    }
+    fetch("http://localhost:4200/contactos",{
+      method: 'POST',
+      body: JSON.stringify(form),
+      headers: { 'Content-Type': 'application/json' }
+    })
+    .then((res)=>{return res.json()})
+    .then((json)=>{return console.log(json)})
+  }
+
+  render() {
+    return (
       <>
-      <Router>
-        <NavBar/>
-        <Switch>
-          <Route path="/home"><Home/></Route>
-          <Route path="/contact"><Contact/></Route>
-          <Route path="/products"><Products/></Route>
-          <Route path="*"><Redirect to="/home"/></Route>
-        </Switch>
-      </Router>
+        <Router>
+          <NavBar />
+          <Switch>
+            <Route path="/home"><Home datas={this.state.banner || []} /></Route>
+            <Route path="/contact"><Contact enviar={this.enviar} /></Route>
+            <Route path="/products"><Products productos={this.state.productos || []} /></Route>
+            <Route path="*"><Redirect to="/home" /></Route>
+          </Switch>
+        </Router>
       </>
     )
   }
