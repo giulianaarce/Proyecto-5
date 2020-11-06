@@ -12,7 +12,7 @@ export default class Contact extends React.Component{
         }
     }
     handleNameChange = (e)=>{
-        this.setState({name: e.target.value})
+        this.setState({name: e.target.value});
     }
     handleEmailChange = (e)=>{
         this.setState({email: e.target.value})
