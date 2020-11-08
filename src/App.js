@@ -10,6 +10,7 @@ import {
   Route,
   Redirect
 } from "react-router-dom";
+let confirmacion = undefined
 
 
 export default class App extends React.Component {
@@ -18,22 +19,111 @@ export default class App extends React.Component {
     this.state = {
       productos: "",
       formulario: "",
-      banner:"",
+      banner: "",
     }
   }
-  //Productos
+
   componentDidMount() {
+    this.token()
+    this.confirmar()
+    if (localStorage.getItem("confirmacion") == null) {
+      localStorage.setItem("confirmacion", confirmacion);
+      if (confirmacion === true) {
+        this.inicioUsuario()
+
+      }
+    }
+
     fetch("http://localhost:4200/productos")
       .then((res) => {
         return res.json()
       }).then((json) => {
         this.setState({ productos: json })
       })
-      fetch("http://localhost:4200/banner")
-      .then((res)=>{return res.json()})
-      .then((json)=>{return this.setState({banner: json})})
+    fetch("http://localhost:4200/banner")
+      .then((res) => { return res.json() })
+      .then((json) => { return this.setState({ banner: json }) })
   }
+  //Funciones
+  confirmar = () => {
+    if (localStorage.getItem("confirmacion") === null) {
+      confirmacion = window.confirm("Desea ingresar Nombre e email?")
+      console.log("confirmacion", confirmacion)
+      localStorage.setItem("confirmacion", confirmacion);
+      if (confirmacion === true) {
+        this.inicioUsuario()
 
+      }
+    }
+  }
+  //Inicio Usuario
+  inicioUsuario = () => {
+    this.nombreValid();
+    this.emailValid();
+    this.sendUser()
+  }
+  //Validar nombre
+  nombreValid = (nombre) => {
+    do {
+      nombre = prompt("Ingrese su nombre");
+
+      if (nombre.trim() === "") {
+        alert("Ingrese datos validos");
+      } else { return localStorage.setItem("nombre", nombre); }
+    } while (nombre === "" || nombre !== undefined);
+  }
+  //Validar y Guardar email
+  guardarEmail = (email) => {
+    email = prompt("Ingrese su email");
+    let arrEmail = email.split("");
+    if (arrEmail.includes("@") && arrEmail.includes(".")) {
+      localStorage.setItem("email", email);
+      this.enviarMail();
+    } else {
+      alert("Datos invalidos");
+    }
+  }
+  emailValid = (email) => {
+    do {
+      this.guardarEmail(email);
+    } while (localStorage.getItem("email") === null);
+  }
+  //Confirmar si quiere recibir mail
+  enviarMail = (mail) => {
+    mail = window.confirm("Desea recibir mails con novedades?");
+    if (mail === true) {
+      alert(
+        "Estaremos enviandole las ultimas novedades a " +
+        localStorage.getItem("email")
+      );
+      localStorage.setItem("mail", mail);
+
+    }
+  }
+  //Generar Token
+  token = () => {
+    let name = "";
+    let email = "";
+    let fecha = new Date();
+    let hora = fecha + name + email;
+    return localStorage.setItem("token", hora)
+  }
+  //Enviar datos de Usuario
+  sendUser = () => {
+    const arrUsuario = {
+      token: localStorage.getItem("token"),
+      name: localStorage.getItem("nombre"),
+      email: localStorage.getItem("email"),
+      sendEmail: localStorage.getItem("mail")
+    }
+    fetch("http://localhost:4200/user",{
+    method: 'POST',
+    body: JSON.stringify(arrUsuario) ,
+    headers:{'Content-Type':'application/json'}
+    }).then((res)=>{return res.json()})
+    .then((json)=>{return console.log(json)})
+  }
+  //Enviar Formulario
   enviar = (name, email, phone, subject, message) => {
     const form = {
       name: name,
@@ -42,13 +132,13 @@ export default class App extends React.Component {
       subject: subject,
       message: message
     }
-    fetch("http://localhost:4200/contactos",{
+    fetch("http://localhost:4200/contactos", {
       method: 'POST',
       body: JSON.stringify(form),
       headers: { 'Content-Type': 'application/json' }
     })
-    .then((res)=>{return res.json()})
-    .then((json)=>{return console.log(json)})
+      .then((res) => { return res.json() })
+      .then((json) => { return console.log(json) })
   }
 
   render() {
