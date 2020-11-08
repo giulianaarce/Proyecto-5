@@ -17,3 +17,13 @@ code {
   height: 250px;
   margin: auto;
 }
+table, th,tr,td{
+  width:600px;
+  padding:15px;
+  text-align: center;
+  border: 1px solid black;
+  border-collapse: collapse;
+}
+th{
+  background-color:rgb(193, 227, 250);
+}
