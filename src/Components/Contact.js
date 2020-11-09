@@ -9,7 +9,8 @@ export default class Contact extends React.Component{
             email :"",
             phone :"",
             theme : "",
-            message : ""
+            message : "",
+            visible: false
         }
     }
     handleNameChange = (e)=>{
@@ -36,50 +37,36 @@ export default class Contact extends React.Component{
             <> 
                 <h2 id="estilo">Contacto</h2>
                 <form>   
-                    <div className="form-group" style={{width: '30rem'}}>
-                        <label htmlFor="name">Nombre</label>
-                        <input type="text" className="form-control" id="name" onChange={this.handleNameChange}/>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <div className="form-group" style={{width: '30rem'}}>
+                            <label htmlFor="name">Nombre</label>
+                            <input type="text" className="form-control" id="name" onChange={this.handleNameChange} required/>
                         </div>
-                    </div>
-                    <div className="form-group" style={{width: '30rem'}}>
-                        <label htmlFor="email">Email</label>
-                        <input type="email" className="form-control" id="email" aria-describedby="emailHelp" onChange={this.handleEmailChange}/>
-                        <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <div className="form-group" style={{width: '30rem'}}>
+                            <label htmlFor="email">Email</label>
+                            <input type="email" className="form-control" id="email" aria-describedby="emailHelp" onChange={this.handleEmailChange} required/>
+                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
                         </div>
-                    </div>
-                    <div className="form-group" style={{width: '30rem'}}>
-                        <label htmlFor="phone">Teléfono</label>
-                        <input type="number" className="form-control" id="phone" onChange={this.handlePhoneChange}/>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <div className="form-group" style={{width: '30rem'}}>
+                            <label htmlFor="phone">Teléfono</label>
+                            <input type="number" className="form-control" id="phone" onChange={this.handlePhoneChange} required/>
                         </div>
-                    </div>
-                    <div class="form-group" style={{width: '30rem'}} onChange={this.handleThemeChange}>
-                        <label for="theme">Temas</label>
-                        <select class="form-control" id="theme">
-                            <option value="">Seleccione un Tema</option>
-                            <option value="venta">Venta</option>
-                            <option value="trabajo">Trabajo</option>
-                            <option value="reparacion">Reparación</option>
-                            <option value="otros">Otros</option>
-                        </select>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <div class="form-group" style={{width: '30rem'}} >
+                            <label for="theme">Temas</label>
+                            <select class="form-control" id="theme" onChange={this.handleThemeChange} required>
+                                <option value="">Seleccione un Tema</option>
+                                <option value="venta">Venta</option>
+                                <option value="trabajo">Trabajo</option>
+                                <option value="reparacion">Reparación</option>
+                                <option value="otros">Otros</option>
+                            </select>
                         </div>
-                    </div>
-                    <div className="form-group" style={{width: '30rem'}}>
-                        <label htmlFor="message">Mensaje</label>
-                        <textarea className="form-control" id="message" rows={3} defaultValue={""} onChange={this.handleMessageChange}/>
-                        <div class="valid-feedback">
-                            Looks good!
+                        <div className="form-group" style={{width: '30rem'}}>
+                            <label htmlFor="message">Mensaje</label>
+                            <textarea className="form-control" id="message" rows={3} defaultValue={""} onChange={this.handleMessageChange} required/>
                         </div>
-                    </div>
-                    <button className="btn btn-primary" type="submit" onClick={this.handleClick}>Enviar</button>
-
+                        <>
+                            <button className="btn btn-primary" type="submit" onClick={this.handleClick} color="success">Enviar</button>
+                        </>
                     </form>
                     <>
                         <h2 id="estilo">Mapa</h2>

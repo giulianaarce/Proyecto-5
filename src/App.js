@@ -138,13 +138,18 @@ export default class App extends React.Component {
       subject: subject,
       message: message
     }
-    fetch("http://localhost:4200/contactos", {
-      method: 'POST',
-      body: JSON.stringify(form),
-      headers: { 'Content-Type': 'application/json' }
-    })
-      .then((res) => { return res.json() })
-      .then((json) => { return console.log(json) })
+    if(name !== "" || email !== "" || phone !== "" || subject !== "" || message !== ""){
+      fetch("http://localhost:4200/contactos", {
+        method: 'POST',
+        body: JSON.stringify(form),
+        headers: { 'Content-Type': 'application/json' }
+      })
+        .then((res) => { return res.json() })
+        .then((json) => { return console.log(json) })
+        alert("El mensaje ha sido enviado");
+    }else{
+      alert("Debe ingresar correctamente sus datos");
+    }
   }
 
   render() {
