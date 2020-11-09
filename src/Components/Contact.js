@@ -1,4 +1,5 @@
-import React from 'react'
+import React from 'react';
+import MapView from './MapView';
 
 export default class Contact extends React.Component{
     constructor(props){
@@ -71,7 +72,7 @@ export default class Contact extends React.Component{
                         </div>
                     </div>
                     <div className="form-group" style={{width: '30rem'}}>
-                        <label htmlFor="message">Example textarea</label>
+                        <label htmlFor="message">Mensaje</label>
                         <textarea className="form-control" id="message" rows={3} defaultValue={""} onChange={this.handleMessageChange}/>
                         <div class="valid-feedback">
                             Looks good!
@@ -80,7 +81,10 @@ export default class Contact extends React.Component{
                     <button className="btn btn-primary" type="submit" onClick={this.handleClick}>Enviar</button>
 
                     </form>
-                    <h2 id="estilo">Mapa</h2>
+                    <>
+                        <h2 id="estilo">Mapa</h2>
+                        <MapView></MapView>
+                    </>
             </>
 
         )
