@@ -35,23 +35,22 @@ export default class Contact extends React.Component{
     render(){
         return(
             <> 
-                <h2 id="estilo">Contacto</h2>
-                <form>   
+                <form style={{paddingLeft:230, paddingTop:50}}>   
                         <div className="form-group" style={{width: '30rem'}}>
-                            <label htmlFor="name">Nombre</label>
+                            <label htmlFor="name"><strong>Nombre</strong></label>
                             <input type="text" className="form-control" id="name" onChange={this.handleNameChange} required/>
                         </div>
                         <div className="form-group" style={{width: '30rem'}}>
-                            <label htmlFor="email">Email</label>
+                            <label htmlFor="email"><strong>Email</strong></label>
                             <input type="email" className="form-control" id="email" aria-describedby="emailHelp" onChange={this.handleEmailChange} required/>
-                            <small id="emailHelp" className="form-text text-muted">We'll never share your email with anyone else.</small>
+                            <small id="emailHelp" className="form-text text-muted"><strong>We'll never share your email with anyone else.</strong></small>
                         </div>
                         <div className="form-group" style={{width: '30rem'}}>
-                            <label htmlFor="phone">Teléfono</label>
+                            <label htmlFor="phone"><strong>Telefono</strong></label>
                             <input type="number" className="form-control" id="phone" onChange={this.handlePhoneChange} required/>
                         </div>
                         <div class="form-group" style={{width: '30rem'}} >
-                            <label for="theme">Temas</label>
+                            <label for="theme"><strong>Temas</strong></label>
                             <select class="form-control" id="theme" onChange={this.handleThemeChange} required>
                                 <option value="">Seleccione un Tema</option>
                                 <option value="venta">Venta</option>
@@ -61,17 +60,16 @@ export default class Contact extends React.Component{
                             </select>
                         </div>
                         <div className="form-group" style={{width: '30rem'}}>
-                            <label htmlFor="message">Mensaje</label>
+                            <label htmlFor="message"><strong>Mensaje</strong></label>
                             <textarea className="form-control" id="message" rows={3} defaultValue={""} onChange={this.handleMessageChange} required/>
                         </div>
                         <>
                             <button className="btn btn-primary" type="submit" onClick={this.handleClick} color="success">Enviar</button>
                         </>
                     </form>
-                    <>
-                        <h2 id="estilo">Mapa</h2>
+                    <div style={{paddingTop:30}}>
                         <MapView></MapView>
-                    </>
+                    </div>
             </>
 
         )

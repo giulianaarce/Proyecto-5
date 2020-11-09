@@ -33,7 +33,7 @@ export default class Products extends React.Component {
                     {this.props.productos.map((product) => {
                         if (product.discountPrice) {
                             return (
-                                <ProductItemDis itle={product.title}
+                                <ProductItemDis title={product.title}
                                 description={product.description}
                                 imgUrl={product.imgUrl}
                                 inStock={product.inStock}
