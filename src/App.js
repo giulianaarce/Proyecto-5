@@ -20,6 +20,7 @@ export default class App extends React.Component {
       productos: "",
       formulario: "",
       banner: "",
+      dataHome:""
     }
   }
 
@@ -43,6 +44,11 @@ export default class App extends React.Component {
     fetch("http://localhost:4200/banner")
       .then((res) => { return res.json() })
       .then((json) => { return this.setState({ banner: json }) })
+    
+      fetch("http://localhost:4200/home")
+    .then((res)=>{return res.json()})
+    .then((json)=>{return this.setState({dataHome: json})})
+
   }
   //Funciones
   confirmar = () => {
@@ -147,12 +153,13 @@ export default class App extends React.Component {
         <Router>
           <NavBar />
           <Switch>
-            <Route path="/home"><Home datas={this.state.banner || []} /></Route>
+            <Route path="/home"><Home banner={this.state.banner || []} dataHome={this.state.dataHome || []} /></Route>
             <Route path="/contact"><Contact enviar={this.enviar} /></Route>
             <Route path="/products"><Products productos={this.state.productos || []} /></Route>
             <Route path="*"><Redirect to="/home" /></Route>
           </Switch>
         </Router>
+        <footer>Guayerd Bikes - Grupo B</footer>
       </>
     )
   }
