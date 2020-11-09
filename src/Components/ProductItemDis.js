@@ -18,8 +18,8 @@ export default class ProductItemDis extends React.Component {
                             <h5 className="card-title">{this.props.title}</h5>
                             <p className="card-text">{this.props.description}</p>
                             <p className="card-text">En stock: {this.props.inStock}</p>
-                            <p className="card-text">Precio antes:<s> {this.props.currency} {this.props.price}</s></p>
-                            <p className="card-text">Precio ahora:<strong> {this.props.currency} {this.props.discountPrice}</strong></p> 
+                            <p className="text-danger">.text-danger  style= {{$font:16}} Precio antes:<s> {this.props.currency} {this.props.price} </s></p>
+                            <p class="text-success">.text-success style= {{$font:16}}  Precio ahora:<strong> {this.props.currency} {this.props.discountPrice}</strong></p> 
                         </div>
                     </div>
                 </div>
