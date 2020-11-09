@@ -5,7 +5,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #294a85;
+  background-color: #00599f;
 }
 
 code {
@@ -25,5 +25,12 @@ table, th,tr,td{
   border-collapse: collapse;
 }
 th{
-  background-color:rgb(193, 227, 250);
+  background-color:#69A0CB;
+  font-family: fantasy;
+  font-size: 25px;
 }
+tr,td{
+  font-size: 15px;
+  font-weight: 1000;
+}
+

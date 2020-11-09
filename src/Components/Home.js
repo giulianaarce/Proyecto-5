@@ -16,8 +16,8 @@ export default class Home extends React.Component {
                 {this.props.dataHome.map((home) => {
                     return (
                         <div>
-                            <h3>{home.title}</h3>
-                            <p>{home.data}</p>
+                            <h3 style={{backgroundColor:"#69A0CB", fontFamily:"fantasy", fontSize:40}}>{home.title}</h3>
+                            <p><strong>{home.data}</strong></p>
                         </div>
                     )
                 })}
